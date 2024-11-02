@@ -1,0 +1,171 @@
+.navbar {
+  width: 100%;
+  background-color:transparent;
+  padding: 18px -8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  margin-top: 9px;
+}
+
+.navbar-left .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-size:33px;
+  padding-left: 10px;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-icon {
+  color: #fff;
+  font-size: 2.2rem;
+  text-decoration: none;
+  padding: 3px;
+}
+.nav-icon1 {
+  color: #fff;
+  font-size: 2.2rem;
+  text-decoration: none;
+  padding-right:10px ;
+  padding-left: 5px;
+}
+
+.nav-icon:hover {
+  color: #488aec;
+}
+.nav-icon1:hover{
+  color: #e59178; 
+}
+.container {
+  margin-top: 60px;
+}
+
+body {
+  background-image: url('./images/background7.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.btn {
+  outline: 0;
+  border: none;
+  background-color: #488aec;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn span {
+  display: inline-block;
+}
+
+button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* Output styling */
+#weather-output {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  width: 100%;
+  max-width: 300px; /* Width of the output box */
+  text-align: center;
+}
+
+#weather-output p {
+  margin: 5px 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+.air-quality-data {
+  color: white; /* White text color */
+  padding: 20px;
+  border-radius: 7px;
+  text-align: left;
+  max-width: 300px;
+  margin: 0 auto; /* Center horizontally */
+  font-size: 18px;
+}
+
+.air-quality-data p {
+  margin: 3px 3px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.air-quality-data p strong {
+  flex: 1.5; /* Label aligned to the left */
+  text-align: right;
+}
+
+.air-quality-data p span {
+  flex: 1.8; /* Value aligned to the left with some space */
+  text-align: left;
+  padding-left: 15px; /* Space between label and value */
+}
+
+
+

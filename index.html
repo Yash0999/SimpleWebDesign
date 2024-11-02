@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Check</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="#" class="nav-link">Home</a>
+    </div>
+    <div class="navbar-right">
+        <a href="https://www.linkedin.com/in/yaswanth-kumar-742764265/" target="_blank" class="nav-icon">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:yaswanth0809@gmail.com" class="nav-icon1">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</nav>
+    <div class="container">
+        <h1>Air Quality</h1>
+        <form id="weather-form">
+            <input type="text" id="latitude" placeholder="Enter Latitude" required>
+            <input type="text" id="longitude" placeholder="Enter Longitude" required>
+            <button class="btn" type="submit">
+                <span class="default-text">Submit</span>
+                <span class="submitting-text" style="display:none;">Submitting..</span>
+                <span class="done-text" style="display:none;">Done!</span>
+                <span class="error-text" style="display:none;">Error!</span>
+            </button>
+        </form>
+        <div id="weather-output" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('weather-form');
+        const button = form.querySelector('.btn');
+        const buttonTexts = {
+            default: button.querySelector('.default-text'),
+            submitting: button.querySelector('.submitting-text'),
+            done: button.querySelector('.done-text'),
+            error: button.querySelector('.error-text')
+        };
+        const output = document.getElementById('weather-output');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const latitude = document.getElementById('latitude').value;
+            const longitude = document.getElementById('longitude').value;
+            const url = `https://air-quality.p.rapidapi.com/history/airquality?lon=${longitude}&lat=${latitude}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': 'f85506e6f0mshee5cf7181c45468p1cf4a7jsnf789ea5ba9b2', 
+                    'x-rapidapi-host': 'air-quality.p.rapidapi.com'
+                }
+            };
+
+            updateButtonState('submitting');
+
+            try {
+                const response = await fetch(url, options);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('API Response:', data); 
+                if (data && data.data && data.data.length > 0) {
+                    displayAirQualityData(data);
+                    updateButtonState('done');
+                } else {
+                    output.innerHTML = `<p>No air quality data available for the specified location.</p>`;
+                    updateButtonState('error');
+                }
+            } catch (error) {
+                console.error('Fetch operation error:', error);
+                updateButtonState('error');
+                output.innerHTML = `<p>Error fetching air quality data: ${error.message}</p>`;
+            }
+        });
+        function displayAirQualityData(data) {
+            const latestData = data.data[0]; 
+            if (latestData) {
+    output.innerHTML = `
+        <div class="air-quality-data">
+            <p><strong>AQI</strong><span> : ${latestData.aqi ?? 'N/A'}</span></p>
+            <p><strong>CO</strong><span> : ${latestData.co ?? 'N/A'}</span></p>
+            <p><strong>NO₂</strong><span> : ${latestData.no2 ?? 'N/A'}</span></p>
+            <p><strong>O₃</strong><span> : ${latestData.o3 ?? 'N/A'}</span></p>
+            <p><strong>PM₁₀</strong><span> : ${latestData.pm10 ?? 'N/A'}</span></p>
+            <p><strong>PM₂.₅</strong><span> : ${latestData.pm25 ?? 'N/A'}</span></p>
+            <p><strong>SO₂</strong><span> : ${latestData.so2 ?? 'N/A'}</span></p>
+        </div>
+    `;
+} else {
+    output.innerHTML = `<p>Data format not as expected. Please check the API response structure.</p>`;
+}
+
+
+        }
+
+        function updateButtonState(state) {
+            for (const key in buttonTexts) {
+                buttonTexts[key].style.display = key === state ? 'inline' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>
