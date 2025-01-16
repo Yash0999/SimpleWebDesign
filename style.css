@@ -1,7 +1,15 @@
+/* Ensure consistent styles for all browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar styling */
 .navbar {
   width: 100%;
-  background-color:transparent;
-  padding: 18px -8px;
+  background-color: transparent;
+  padding: 18px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,15 +17,15 @@
   top: 0;
   left: 0;
   color: #fff;
-  margin-top: 9px;
+  z-index: 1000; /* Ensure navbar stays on top */
 }
 
+/* Navbar links */
 .navbar-left .nav-link {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 33px;
   font-weight: bold;
-  font-size:33px;
   padding-left: 10px;
 }
 
@@ -27,30 +35,23 @@
   align-items: center;
 }
 
-.nav-icon {
-  color: #fff;
-  font-size: 2.2rem;
-  text-decoration: none;
-  padding: 3px;
-}
+/* Icon styling */
+.nav-icon,
 .nav-icon1 {
   color: #fff;
   font-size: 2.2rem;
   text-decoration: none;
-  padding-right:10px ;
-  padding-left: 5px;
 }
 
 .nav-icon:hover {
   color: #488aec;
 }
-.nav-icon1:hover{
-  color: #e59178; 
-}
-.container {
-  margin-top: 60px;
+
+.nav-icon1:hover {
+  color: #e59178;
 }
 
+/* Body styling */
 body {
   background-image: url('./images/background7.png');
   background-repeat: no-repeat;
@@ -64,21 +65,26 @@ body {
   text-align: center;
   margin: 0;
 }
+
+/* Container for the main content */
 .container {
   width: 100%;
   max-width: 350px;
-  text-align: center;
   margin: 0 auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #ffffff;
 }
-input[type="text"] {
+
+/* Input fields styling */
+input[type='text'] {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -86,22 +92,18 @@ input[type="text"] {
   border-radius: 5px;
   font-size: 1rem;
 }
+
+/* Submit button styling */
 .btn {
-  outline: 0;
   border: none;
   background-color: #488aec;
   color: #ffffff;
   font-size: 0.875rem;
-  line-height: 1.2rem;
-  font-weight: 700;
   text-transform: uppercase;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  display: inline-block;
-  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {
@@ -109,28 +111,14 @@ input[type="text"] {
   transform: translateY(-2px);
 }
 
-.btn span {
-  display: inline-block;
-}
-
-button svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.btn:focus {
-  outline: none;
-}
-
-/* Output styling */
+/* Styling for weather output box */
 #weather-output {
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-  width: 100%;
-  max-width: 300px; /* Width of the output box */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
   text-align: center;
 }
 
@@ -139,33 +127,31 @@ button svg {
   color: #ffffff;
   font-weight: bold;
 }
+
 .air-quality-data {
-  color: white; /* White text color */
+  color: white;
   padding: 20px;
   border-radius: 7px;
   text-align: left;
   max-width: 300px;
-  margin: 0 auto; /* Center horizontally */
+  margin: 0 auto;
   font-size: 18px;
 }
 
 .air-quality-data p {
-  margin: 3px 3px;
+  margin: 3px 0;
   font-size: 18px;
   display: flex;
   align-items: center;
 }
 
 .air-quality-data p strong {
-  flex: 1.5; /* Label aligned to the left */
+  flex: 1.5;
   text-align: right;
 }
 
 .air-quality-data p span {
-  flex: 1.8; /* Value aligned to the left with some space */
+  flex: 1.8;
   text-align: left;
-  padding-left: 15px; /* Space between label and value */
+  padding-left: 15px;
 }
-
-
-
